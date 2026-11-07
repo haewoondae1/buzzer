@@ -114,7 +114,7 @@ h3{font-weight:700;font-size:16px;margin:0 0 6px;letter-spacing:-.02em}
 .po .steps span.done{background:var(--cam);color:#fff}
 .po .steps span.now{background:var(--arena);color:#fff}
 .po.bonus{margin-top:8px;border-style:solid;border-color:var(--line2);background:var(--panel)}
-.po.bonus .steps span.b1{background:#CE1141;color:#fff}.po.bonus .steps span.b2{background:#552583;color:#FDB927}
+.po.bonus .steps span.b0{background:#0F766E;color:#fff}.po.bonus .steps span.b1{background:#CE1141;color:#fff}.po.bonus .steps span.b2{background:#552583;color:#FDB927}
 .dock{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:12px}
 .dock button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 4px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);font-size:13.5px;font-weight:700;color:var(--ink)}
 .dock button svg{color:var(--cam)}
@@ -241,6 +241,19 @@ h3{font-weight:700;font-size:16px;margin:0 0 6px;letter-spacing:-.02em}
 .waitnext .wn-h b{font-size:16px}.waitnext .wn-h span{font-size:12.5px;color:var(--soft)}
 .waitnext .wn-m{display:flex;gap:10px;align-items:center;margin-bottom:10px}
 .waitnext .wn-m b{display:block;font-size:15.5px}.waitnext .wn-m small{display:block;font-size:13px;color:var(--soft);line-height:1.5}
+/* 학원 문의 */
+.callrow{display:flex;align-items:center;gap:12px;width:100%;margin-top:12px;padding:14px 14px 14px 16px;text-align:left;border-radius:var(--r);background:linear-gradient(135deg,#0E2B27,#123A33);color:#fff;border:1px solid #1E4A42;box-shadow:0 3px 10px rgba(0,0,0,.18)}
+.callrow .ct{flex:1;min-width:0}
+.callrow small{display:block;font-size:12.5px;color:#9FC9BC;line-height:1.4}
+.callrow small:first-child{color:#5FD39A;font-weight:700}
+.callrow b{display:block;font-family:var(--num);font-size:24px;letter-spacing:.02em;line-height:1.2}
+.callrow .cgo{flex:none;display:flex;align-items:center;gap:6px;padding:10px 16px;border-radius:999px;background:#22A55A;font-weight:800;box-shadow:inset 0 -3px 0 rgba(0,0,0,.2)}
+.callrow .cgo svg{width:18px;height:18px}
+#csheet{position:fixed;inset:0;z-index:95;display:grid;place-items:end center;background:rgba(10,15,28,.6);padding:16px}
+#csheet .cs{width:100%;max-width:420px;background:var(--panel);color:var(--ink);border-radius:10px;padding:18px;text-align:center;display:grid;gap:8px}
+#csheet .cs b{font-family:var(--num);font-size:30px}
+#csheet .cs small{color:var(--soft)}
+#csheet a.btn{background:#22A55A;text-decoration:none}
 /* 배경음악 줄 */
 .juke{display:flex;align-items:center;gap:10px;margin:-4px 0 12px;padding:8px 8px 8px 12px;background:var(--arena);color:#fff;border-radius:var(--r)}
 .juke .jk-ic{color:var(--led);display:flex}
@@ -737,6 +750,7 @@ const ic=d=>`<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${d}</svg>`;
 const IC={back:ic('<path d="M15 5l-7 7 7 7"/>'),snd:ic('<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/>'),mute:ic('<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M17 9l5 6M22 9l-5 6"/>'),
   book:ic('<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/>'),chart:ic('<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>'),
   x:ic('<path d="M6 6l12 12M18 6L6 18"/>'),help:ic('<circle cx="12" cy="12" r="9"/><path d="M9.5 9.3a2.6 2.6 0 0 1 5 .9c0 1.8-2.5 2.3-2.5 4"/><path d="M12 17.2v.1"/>'),
+  phone:ic('<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>'),
   music:ic('<path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/>'),skip:ic('<path d="M6 5l8 7-8 7zM17 5v14"/>'),
   ball:ic('<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3v18M5.6 5.6c3 3 3 9.8 0 12.8M18.4 5.6c-3 3-3 9.8 0 12.8"/>'),play:ic('<path d="M8 5v14l11-7z"/>')};
 const LOGO=`<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="#C8102E"/><path d="M2.5 16h27M16 2v28M6 6.5c4.5 4.6 4.5 14.4 0 19M26 6.5c-4.5 4.6-4.5 14.4 0 19" fill="none" stroke="#1B2433" stroke-width="1.8"/><circle cx="16" cy="16" r="14" fill="none" stroke="#fff" stroke-width="1.6"/></svg>`;
@@ -806,14 +820,15 @@ function homeScreen(){
      <div class="track">${SCHED.map((s,k)=>{const g=season.games[k];return `<i class="${g?g.r:(k===n&&!over?'now':'')}" title="${s.name}">${g?(g.r==='W'?'승':'패'):k+1}</i>`}).join('')}</div>
      <button class="po ${clinched()?'open':''}" id="po"><span class="steps">${PO.map((p,k)=>`<span class="${k<season.ps?'done':(clinched()&&k===season.ps?'now':'')}">${p.r}</span>`).join('')}</span>
        <span class="note">${season.ps>=PO.length?`우승 ${season.titles}회`:clinched()?'도전하기':`${Math.max(0,QUAL-w)}승 더`}</span></button>
-     <button class="po open bonus" id="bonus"><span class="steps"><span class="b1">불스</span><span class="b2">레이커스</span></span><span class="note">번외 경기, 고등·수능 문제</span></button></section>
-   <nav class="dock" aria-label="메뉴"><button id="howto">${IC.help}<span>경기 방법</span></button><button id="prac">${IC.ball}<span>연습 경기</span></button><button id="notes">${IC.book}<span>개념 노트</span></button><button id="stats">${IC.chart}<span>기록</span></button></nav>`,false);
+     <button class="po open bonus" id="bonus"><span class="steps"><span class="b0">2025 기출</span><span class="b1">불스</span><span class="b2">레이커스</span></span><span class="note">번외 경기</span></button></section>
+   <nav class="dock" aria-label="메뉴"><button id="howto">${IC.help}<span>경기 방법</span></button><button id="prac">${IC.ball}<span>연습 경기</span></button><button id="notes">${IC.book}<span>개념 노트</span></button><button id="stats">${IC.chart}<span>기록</span></button></nav>
+   <button class="callrow" id="call"><span class="ct"><small>학원 문의</small><b>010-4829-8327</b><small>해운대수학학원, 해운대구 세실로 33, 7층</small></span><span class="cgo">${IC.phone}전화</span></button>`,false);
   crowdOff();bgm(SND.home);
   const nb=$('nextbgm');if(nb)nb.onclick=()=>{const i=BGMS.findIndex(x=>x.k===SND.home);SND.home=BGMS[(i+1)%BGMS.length].k;store.set('bgmHome5',SND.home);$('bgmName').textContent=bgmName(SND.home);unlock();bgm(SND.home)};
   const cv=$('cv');SC.opp=nx.col;sceneMount(cv);homeIdle(cv);
   const p=$('play');if(p)p.onclick=()=>{AC();sfx('charge');startGame('season')};
   $('po').onclick=()=>{if(clinched()&&season.ps<PO.length){AC();sfx('charge');startGame('po')}else{sfx('blip');const b=$('po');b.animate([{transform:'translateX(0)'},{transform:'translateX(-5px)'},{transform:'translateX(5px)'},{transform:'translateX(0)'}],{duration:240})}};
-  $('prac').onclick=()=>{sfx('blip');practiceMenu()};$('bonus').onclick=()=>{sfx('blip');bonusMenu()};$('howto').onclick=()=>{sfx('blip');rules()};$('notes').onclick=()=>{sfx('blip');notes()};$('stats').onclick=()=>{sfx('blip');stats()};
+  $('prac').onclick=()=>{sfx('blip');practiceMenu()};$('call').onclick=callSheet;$('bonus').onclick=()=>{sfx('blip');bonusMenu()};$('howto').onclick=()=>{sfx('blip');rules()};$('notes').onclick=()=>{sfx('blip');notes()};$('stats').onclick=()=>{sfx('blip');stats()};
   const ns=$('newSeason');if(ns)ns.onclick=()=>{season={no:season.no+1,games:[],ps:0,titles:season.titles,bb:season.bb};saveSeason();sfx('blip');homeScreen()};
   const mo=$('more');if(mo)mo.onclick=()=>{AC();sfx('charge');startGame('season')};
 }
@@ -825,6 +840,13 @@ function seasonEndCard(){
     ${n<GAMES&&season.ps<PO.length?`<button class="btn ghost go" id="more">남은 정규시즌 ${n+1}번째 경기</button>`:''}</section>`;
   return `<section class="panel next"><div><div class="sit">정규시즌 ${W()}승 ${L()}패</div><h3>이번 시즌 플레이오프는 어려워졌어</h3><div class="sit">연습 경기로 약한 단원을 다지고 새 시즌을 시작해.</div></div>
     <button class="btn go" id="newSeason">새 시즌 시작</button></section>`}
+
+/* ================= 학원 전화 ================= */
+function callSheet(){sfx('blip');const old=$('csheet');if(old)old.remove();
+  const d=document.createElement('div');d.id='csheet';
+  d.innerHTML=`<div class="cs" role="dialog" aria-label="학원 전화"><small>해운대수학학원</small><b>010-4829-8327</b><small>해운대구 세실로 33, 7층</small>
+    <a class="btn block" href="tel:01048298327">${IC.phone} 전화 걸기</a><button class="btn ghost block" id="csx">닫기</button></div>`;
+  document.body.appendChild(d);d.onclick=e=>{if(e.target===d)d.remove()};$('csx').onclick=()=>d.remove()}
 
 /* ================= 번외 경기 ================= */
 function bonusMenu(){
